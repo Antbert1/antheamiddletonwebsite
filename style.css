@@ -1,0 +1,485 @@
+/*All*/
+
+/*Fix for showing post number*/
+.mask{
+	width:20px;
+	height:20px;
+	background-color: white;
+	position:absolute;
+	top:0;
+}
+
+.postLogoSection{
+	margin-top:-20px;
+}
+
+h1, h2, h3, h4, p, a {
+	font-family: 'Open Sans', sans-serif;
+}
+
+a {
+  transition: color 0.2s ease;
+  color: #333;
+}
+
+a:hover {
+    color: rgb(141,141,141);
+    text-decoration:none;
+}
+
+/*Header*/
+.logoSection {
+  padding-top:40px;
+  padding-bottom:40px;
+}
+
+.navSection{
+  border-top:1px solid rgb(223,223,223);
+  border-bottom:1px solid rgb(223,223,223);
+}
+
+.navbar{
+  margin-bottom:0px;
+  background:none;
+  border:none;
+  margin-left:15px;
+  margin-right:15px;
+}
+
+.navbar .container-fluid{
+  padding-left:0;
+}
+
+.navbar a{
+  font-family: 'Roboto', sans-serif;
+  font-size:1.2em;
+  color:#3a3a3a;
+  padding-left:0 !important;
+  padding-right:40px !important;
+}
+
+#logo {
+  width:366px;
+  height:31px;
+}
+
+/*Post List*/
+.imgAndText img{
+  width:100%;
+}
+
+.postList {
+  list-style-type: none;
+  padding-left:0;
+  padding-top:20px;
+}
+
+.postListItem {
+  background-color:rgb(250,250,250);
+  padding:20px;
+  padding-top:10px;
+  border:1px solid rgb(223,223,223);
+  margin-top:20px;
+  margin-bottom:20px;
+}
+
+.overlayedText {
+    position: absolute;
+    top: 0;
+    color: white;
+    padding: 6px;
+    background-color: #db0d66;
+    text-align: center;
+  }
+
+.dateDivider {
+  border-top: 2px solid rgb(233, 110, 163);
+  width:80%;
+  margin:0 auto;
+}
+
+.day {
+  font-size:1.3em;
+}
+
+.month, .year{
+  font-size: 0.9em;
+}
+
+.contReading {
+  color:rgb(109,109,109);
+}
+
+.extraInfo{
+  display:flex;
+  padding-top:10px;
+}
+
+.extraInfo p{
+  margin-bottom:0;
+}
+
+.tagsInfo {
+  padding-left:10px;
+}
+
+.extraInfoWrap{
+  font-size:0.9em;
+  color:rgb(141,141,141);
+  position: absolute;
+  bottom: 0;
+}
+
+.categories {
+  margin-bottom:0;
+}
+.postListText {
+  min-height: 172px;
+}
+
+.textOnly .postListText{
+  min-height:240px;
+}
+
+
+.catsTitle{
+  font-weight:700;
+}
+
+/*BLOG POST*/
+.blogPost img{
+  width:100%;
+}
+
+.postRow {
+  padding-top:20px;
+}
+
+.imgCaption {
+  font-size:0.8em;
+}
+
+.bottomRow {
+  padding-bottom:40px;
+}
+
+.postInfo{
+  display:flex;
+  padding-top:10px;
+  color:rgb(141,141,141);
+  font-size:0.9em;
+}
+
+.postInfoDiv {
+  padding-right:20px;
+}
+
+.postTitle{
+  border-bottom:1px solid rgb(223,223,223);
+  margin-bottom:20px;
+}
+
+
+/*Footer*/
+.footer{
+  padding-top:20px;
+  border-top:1px solid rgb(223,223,223);
+}
+/* Style the body and outer container */
+
+/*body {
+  margin: 0;
+  color: #333;
+  background-color: #00a0b0;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  line-height: 1.5em;
+}*/
+
+
+
+
+/* Header */
+
+/*
+#logo {
+  display: block;
+  width: 300px;
+  padding: 0 660px 20px 0;
+  border: none;
+  border-bottom: 1px solid #00a0b0;
+  margin-bottom: 40px;
+}*/
+/*
+#footer {
+  border-top: 1px solid #00a0b0;
+  margin-top: 40px;
+  padding: 20px 0 0 0;
+  font-size: .8em;
+}*/
+
+
+/* Headings */
+
+/*h1 {
+  color: #eb6841;
+  margin-bottom: 30px;
+  line-height: 1.2em;
+}
+
+h2, h2 a {
+  color: #edc951;
+}
+
+h2 a {
+  text-decoration: none;
+}*/
+
+
+/* Article headlines */
+
+
+
+#headlines li {
+  margin-bottom: 2em;
+}
+
+
+
+
+#headlines.archive .pubDate {
+  width: 130px;
+}
+
+
+
+#headlines.archive .summary {
+  padding-left: 130px;
+}
+
+
+/* "You are logged in..." header on admin pages */
+
+#adminHeader {
+  width: 940px;
+  padding: 0 10px;
+  border-bottom: 1px solid #00a0b0;
+  font-size: 0.8em;
+}
+
+
+/* Style the form with a coloured background, along with curved corners and a drop shadow */
+
+form {
+  margin: 20px auto;
+  padding: 40px 20px;
+  overflow: auto;
+  background: #fff4cf;
+  border: 1px solid #666;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+  box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+}
+
+
+/* Give form elements consistent margin, padding and line height */
+
+form ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+form ul li {
+  margin: .9em 0 0 0;
+  padding: 0;
+}
+
+form * {
+  line-height: 1em;
+}
+
+
+/* The field labels */
+
+label {
+  display: block;
+  float: left;
+  clear: left;
+  text-align: right;
+  width: 15%;
+  padding: .4em 0 0 0;
+  margin: .15em .5em 0 0;
+}
+
+
+/* The fields */
+
+input, select, textarea {
+  display: block;
+  margin: 0;
+  padding: .4em;
+  width: 80%;
+}
+
+input, textarea, .date {
+  border: 2px solid #666;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background: #fff;
+}
+
+input {
+  font-size: .9em;
+}
+
+select {
+  padding: 0;
+  margin-bottom: 2.5em;
+  position: relative;
+  top: .7em;
+}
+
+textarea {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: .9em;
+  height: 5em;
+  line-height: 1.5em;
+}
+
+textarea#content {
+  font-family: "Courier New", courier, fixed;
+}
+
+
+/* Place a border around focused fields */
+
+form *:focus {
+  border: 2px solid #7c412b;
+  outline: none;
+}
+
+
+/* Display correctly filled-in fields with a green background */
+
+input:valid, textarea:valid {
+  background: #efe;
+}
+
+
+/* Submit buttons */
+
+.buttons {
+  text-align: center;
+  margin: 40px 0 0 0;
+}
+
+input[type="submit"] {
+  display: inline;
+  margin: 0 20px;
+  width: 12em;
+  padding: 10px;
+  border: 2px solid #7c412b;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+  box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+  color: #fff;
+  background: #ef7d50;
+  font-weight: bold;
+  -webkit-appearance: none;
+}
+
+input[type="submit"]:hover, input[type="submit"]:active {
+  cursor: pointer;
+  background: #fff;
+  color: #ef7d50;
+}
+
+input[type="submit"]:active {
+  background: #eee;
+  -moz-box-shadow: 0 0 .5em rgba(0, 0, 0, .8) inset;
+  -webkit-box-shadow: 0 0 .5em rgba(0, 0, 0, .8) inset;
+  box-shadow: 0 0 .5em rgba(0, 0, 0, .8) inset;
+}
+
+
+/* Tables */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+tr, th, td {
+  padding: 10px;
+  margin: 0;
+  text-align: left;
+}
+
+table, th {
+  border: 1px solid #00a0b0;
+}
+
+th {
+  border-left: none;
+  border-right: none;
+  background: #ef7d50;
+  color: #fff;
+  cursor: default;
+}
+
+tr:nth-child(odd) {
+  background: #fff4cf;
+}
+
+tr:nth-child(even) {
+  background: #fff;
+}
+
+tr:hover {
+  background: #ddd;
+  cursor: pointer;
+}
+
+
+/* Status and error boxes */
+
+.statusMessage, .errorMessage {
+  font-size: .8em;
+  padding: .5em;
+  margin: 2em 0;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+  -box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+}
+
+.statusMessage {
+  background-color: #2b2;
+  border: 1px solid #080;
+  color: #fff;
+}
+
+.errorMessage {
+  background-color: #f22;
+  border: 1px solid #800;
+  color: #fff;
+}
+
+/*Media Queries*/
+@media only screen and (max-width: 800px) {
+  .logoSection a{
+    margin-left:40px;
+  }
+  .navSection a{
+    margin-left:40px;
+  }
+}
