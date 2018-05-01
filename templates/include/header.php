@@ -1,4 +1,19 @@
 <!DOCTYPE html>
+<!--Because of redirects, we need to change the extensions on different files-->
+<?php if(isset($_GET['articleId'])) {
+  $isPost = TRUE;
+  if ($_GET['action'] == 'post') {
+    $extension = '../';
+  }
+  else {
+    $extension = '';
+  }
+}
+else {
+  $isPost = FALSE;
+  $extension = '';
+}?>
+
 <html lang="en">
   <head>
     <title><?php echo htmlspecialchars( $results['pageTitle'] )?></title>
@@ -6,7 +21,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Roboto:400,700" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo $extension ?>style.css" />
   </head>
   <body>
 
@@ -24,7 +39,11 @@
     <?php endif ?>
         <div class="container">
           <div class="row logoRow">
-            <a href="."><img id="logo" src="images/websiteImages/anthea-middleton-logo.png" alt="Anthea Middleton" /></a>
+            <?php if ($isPost == TRUE): ?>
+              <a href="../"><img id="logo" src="<?php echo $extension ?>images/websiteImages/anthea-middleton-logo.png" alt="Anthea Middleton" /></a>
+            <?php else: ?>
+              <a href="./"><img id="logo" src="<?php echo $extension ?>images/websiteImages/anthea-middleton-logo.png" alt="Anthea Middleton" /></a>
+            <?php endif ?>
           </div>
         </div>
       </section>

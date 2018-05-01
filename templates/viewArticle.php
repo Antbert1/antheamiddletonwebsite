@@ -19,7 +19,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <p><a href="./">Return to Homepage</a></p>
+        <p><a href="../">Return to Homepage</a></p>
       </div>
     </div>
   </div>
