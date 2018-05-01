@@ -8,7 +8,7 @@ switch ( $action ) {
   case 'archive':
     archive();
     break;
-  case 'viewArticle':
+  case 'post':
     viewArticle();
     break;
   default:

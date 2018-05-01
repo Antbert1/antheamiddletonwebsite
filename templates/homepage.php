@@ -30,7 +30,7 @@
             <div class="row postListItem imgAndText">
               <div class="col-md-12">
                 <h2>
-                  <a href=".?action=viewArticle&amp;articleId=<?php echo $article->id?>"><?php echo htmlspecialchars( $article->title )?></a>
+                  <a href=".?action=post&amp;articleId=<?php echo $article->id?>"><?php echo htmlspecialchars( $article->title )?></a>
                 </h2>
               </div>
               <div class="col-md-4 postListImg">
@@ -49,7 +49,7 @@
 
                   <p class="summary"><?php echo htmlspecialchars( $article->summary )?>...</p>
                   <br>
-                  <a href=".?action=viewArticle&amp;articleId=<?php echo $article->id?>" class="contReading">Continue Reading...</a>
+                  <a href=".?action=post&amp;articleId=<?php echo $article->id?>" class="contReading">Continue Reading...</a>
                   <div class="extraInfoWrap">
                     <div class="extraInfo">
                       <div class="dateInfo"><i class="far fa-calendar-alt"></i>&nbsp;<?php echo date('m.d.y', $article->publicationDate)?></div>
@@ -64,11 +64,11 @@
               <div class="col-md-12 postListText">
 
                   <h2>
-                    <a href=".?action=viewArticle&amp;articleId=<?php echo $article->id?>"><?php echo htmlspecialchars( $article->title )?></a>
+                    <a href=".?action=post&amp;articleId=<?php echo $article->id?>"><?php echo htmlspecialchars( $article->title )?></a>
                   </h2>
                   <p class="summary"><?php echo htmlspecialchars( $article->summary )?>...</p>
                   <br>
-                  <a href=".?action=viewArticle&amp;articleId=<?php echo $article->id?>" class="contReading">Continue Reading...</a>
+                  <a href=".?action=post&amp;articleId=<?php echo $article->id?>" class="contReading">Continue Reading...</a>
                   <div class="extraInfoWrap">
                     <div class="extraInfo">
                       <div class="dateInfo"><i class="far fa-calendar-alt"></i>&nbsp;<?php echo date('m.d.y', $article->publicationDate)?></div>
