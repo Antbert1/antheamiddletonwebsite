@@ -90,6 +90,21 @@
       <div class="col-md-4">
 
       </div>
+      <div id="dom-target" style="display: none;">
+          <?php echo htmlspecialchars($results['totalRows']);?>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="paginator hidePaginator">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <ul class="paginatorUL">
+          <li class="paginatorLI">1</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
