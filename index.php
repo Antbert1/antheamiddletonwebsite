@@ -3,7 +3,6 @@
 
 require( "config.php" );
 $action = isset( $_GET['action'] ) ? $_GET['action'] : "";
-
 switch ( $action ) {
   case 'archive':
     archive();
@@ -12,10 +11,10 @@ switch ( $action ) {
     viewArticle();
     break;
   case 'page':
-    echo $action;
+    viewListSection();
+    break;
   default:
     homepage();
-    echo "Default happening";
 }
 
 
@@ -43,7 +42,7 @@ function viewArticle() {
 function viewListSection() {
   $startPoint = $_GET["startPoint"];
   $results = array();
-  $data = Article::getList( $startPoint, HOMEPAGE_NUM_ARTICLES );
+  $data = Article::getListSection( $startPoint, HOMEPAGE_NUM_ARTICLES );
   $results['articles'] = $data['results'];
   $results['totalRows'] = $data['totalRows'];
   $results['pageTitle'] = "Anthea Middleton";

@@ -104,11 +104,10 @@ class Article
   }
 
   public static function getListSection( $startPoint, $numRows=1000000, $order="publicationDate DESC" ) {
-    $start = $startPoint*10 - 9;
+    $start = $startPoint*10 - 10;
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
     $sql = "SELECT SQL_CALC_FOUND_ROWS *, UNIX_TIMESTAMP(publicationDate) AS publicationDate FROM articles
-            ORDER BY " . mysql_escape_string($order) . " LIMIT 2,numRows";
-
+            ORDER BY " . mysql_escape_string($order) . " LIMIT ". $start . ",". $numRows;
     $st = $conn->prepare( $sql );
     $st->bindValue( ":numRows", $numRows, PDO::PARAM_INT );
     $st->execute();
