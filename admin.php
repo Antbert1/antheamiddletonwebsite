@@ -53,7 +53,7 @@ function login() {
 
 
   $results = array();
-  $results['pageTitle'] = "Admin Login | Widget News";
+  $results['pageTitle'] = "Admin Login | Anthea Middleton";
 
   //TODO: Hash the password
   //$ippw = $_POST['password'];

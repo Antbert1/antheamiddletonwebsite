@@ -6,10 +6,10 @@ define( "DB_USERNAME", "root" );
 define( "DB_PASSWORD", "" );
 define( "CLASS_PATH", "classes" );
 define( "TEMPLATE_PATH", "templates" );
-define( "HOMEPAGE_NUM_ARTICLES", 7 );
+define( "HOMEPAGE_NUM_ARTICLES", 10 );
 define( "ADMIN_USERNAME", "admin" );
 define( "ADMIN_PASSWORD", "mypass" );
-//define( "ADMIN_PASSWORD", "$2y$10$KfKIcQbd3/0x5VhLrnd3.OqNHO2udkrkLyUW3nFvKvOq/OnAVP32a" ); 
+//define( "ADMIN_PASSWORD", "$2y$10$KfKIcQbd3/0x5VhLrnd3.OqNHO2udkrkLyUW3nFvKvOq/OnAVP32a" );
 //TODO: Hash the password - "$2y$10$KfKIcQbd3/0x5VhLrnd3.OqNHO2udkrkLyUW3nFvKvOq/OnAVP32a"
 require( CLASS_PATH . "/Article.php" );
 

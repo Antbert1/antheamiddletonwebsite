@@ -179,6 +179,11 @@ a:hover {
   margin-bottom:20px;
 }
 
+/*Paginator*/
+.hidePaginator {
+	display:none;
+}
+
 
 /*Footer*/
 .footer{
