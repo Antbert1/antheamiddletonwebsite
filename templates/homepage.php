@@ -102,8 +102,8 @@
     <div class="row">
       <div class="col-md-12">
         <ul class="paginatorUL">
-          <li><a href=".?action=page&amp;startPoint=2">1</a></li>
-          <!-- <li class="paginatorLI"><a href="./">1</li> -->
+          <!-- <li><a href=".?action=page&amp;startPoint=2">1</a></li> -->
+          <li><a href=".?action=page&amp;startPoint=1">1</a></li>
         </ul>
       </div>
     </div>

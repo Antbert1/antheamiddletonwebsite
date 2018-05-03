@@ -5,7 +5,11 @@ if (numRows > 10) {
   numPages = Math.round(numRows/10);
   for (i=0; i<numPages; i++) {
     pageNum = i + 2;
-    $(".paginatorUL").append('<li>'+pageNum+'</li>');
+    // $(".paginatorUL").append('<li>'+pageNum+'</li>');
+    $(".paginatorUL").append("<li><a href='.?action=page&amp;startPoint="+pageNum+"'>"+pageNum+"</a></li>");
   }
   $('.paginator').removeClass('hidePaginator');
 }
+
+// 
+// "<li><a href='.?action=page&amp;startPoint="+pageNum+"'>"+pageNum+"</a></li>"
