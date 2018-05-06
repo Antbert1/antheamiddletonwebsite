@@ -47,12 +47,30 @@
 
         <div class="col-md-6">
           <h2>Comments</h2>
-          <?php foreach ( $results['comments'] as $comment ) { ?>
+          <div class="tableDiv">
+            <div class="row commentLine commentLineHeading">
+              <div class="col-md-3 commentItem">Publication Date</div>
+              <div class="col-md-3 commentItem">Name</div>
+              <div class="col-md-6 commentItem">Content</div>
+            </div>
+            <?php foreach ( $results['comments'] as $comment ) { ?>
+              <?php
+                $truncatedContent =  substr($comment->content, 0, 30)."...";
+              ?>
+              <div class="row commentLine">
+                <div class="col-md-3 commentItem">
+                  <?php echo date('j M Y', $comment->publicationDate)?>
+                </div>
+                <div class="col-md-3 commentItem">
+                  <?php echo $comment->userName?>
+                </div>
+                <div class="col-md-6 commentItem">
+                  <?php echo $truncatedContent?>
+                </div>
+              </div>
 
-                      <?php echo $comment->userName?>
-
-
-          <?php } ?>
+            <?php } ?>
+          </div>
         </div>
       </div>
 
