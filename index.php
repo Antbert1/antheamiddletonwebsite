@@ -40,11 +40,11 @@ function viewArticle() {
 }
 
 function viewListSection() {
-  foreach($_GET as $key => $value)
-{
-   echo 'Key = ' . $key . '<br />';
-   echo 'Value= ' . $value;
-}
+//   foreach($_GET as $key => $value)
+// {
+//    echo 'Key = ' . $key . '<br />';
+//    echo 'Value= ' . $value;
+// }
   $startPoint = $_GET["startPoint"];
   $results = array();
   $data = Article::getListSection( $startPoint, HOMEPAGE_NUM_ARTICLES );

@@ -1,17 +1,17 @@
 /*All*/
 
 /*Fix for showing post number*/
-.mask{
+/* .mask{
 	width:20px;
 	height:20px;
 	background-color: white;
 	position:absolute;
 	top:0;
-}
+} */
 
-.postLogoSection{
+/* .postLogoSection{
 	margin-top:-20px;
-}
+} */
 
 h1, h2, h3, h4, p, a {
 	font-family: 'Open Sans', sans-serif;

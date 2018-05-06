@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <!--Because of redirects, we need to change the extensions on different files-->
-<?php if(isset($_GET['articleId'])) {
+<?php
+
+if(isset($_GET['articleId'])) {
+
   $isPost = TRUE;
+  $isPage = FALSE;
   if ($_GET['action'] == 'post') {
     $extension = '../';
   }
@@ -9,13 +13,10 @@
     $extension = '';
   }
 }
-else {
-  $isPost = FALSE;
-  $extension = '';
-}
 
-if(isset($_GET['startPoint'])) {
+elseif (isset($_GET['startPoint'])){
   $isPage = TRUE;
+  $isPost = FALSE;
   if ($_GET['action'] == 'page') {
     $extension = '../../';
   }
@@ -23,10 +24,13 @@ if(isset($_GET['startPoint'])) {
     $extension = '';
   }
 }
+
 else {
   $isPage = FALSE;
+  $isPost = FALSE;
   $extension = '';
 }
+
 ?>
 
 <html lang="en">

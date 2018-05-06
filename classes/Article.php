@@ -67,7 +67,6 @@ class Article
     $st->execute();
     $row = $st->fetch();
     $conn = null;
-    echo $row[0];
     if ( $row ) return new Article( $row );
   }
 

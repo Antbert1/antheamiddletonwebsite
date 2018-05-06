@@ -1,6 +1,6 @@
 <?php include "include/header.php";
 ?>
-<div class="mask"></div>
+
 <section class="blogPost">
   <div class="container">
     <div class="row postTitle">
