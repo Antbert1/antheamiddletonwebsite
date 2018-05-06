@@ -1,6 +1,4 @@
 <?php include "/antheamiddleton/templates/include/header.php" ?>
-
-
 <section>
     <div class="container">
       <div class="row adminHeaderRow">
@@ -13,7 +11,7 @@
       </div>
       <div class="row">
         <div class="col-md-6">
-          <h1>All Posts</h1>
+          <h1>Comment</h1>
 
           <?php if ( isset( $results['errorMessage'] ) ) { ?>
             <div class="errorMessage"><?php echo $results['errorMessage'] ?></div>
@@ -47,12 +45,6 @@
 
         <div class="col-md-6">
           <h2>Comments</h2>
-          <?php foreach ( $results['comments'] as $comment ) { ?>
-
-                      <?php echo $comment->userName?>
-
-
-          <?php } ?>
         </div>
       </div>
 

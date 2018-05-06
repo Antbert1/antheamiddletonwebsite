@@ -67,7 +67,6 @@ function login() {
 
     //if ( $_POST['username'] == ADMIN_USERNAME && $_POST['password'] == ADMIN_PASSWORD ) {
     if ( $_POST['username'] == ADMIN_USERNAME && password_verify($enteredPassword, $biscuitVal)) {
-      echo "TRUE";
       // Login successful: Create a session and redirect to the admin homepage
       $_SESSION['username'] = ADMIN_USERNAME;
       header( "Location: admin.php" );
@@ -170,9 +169,12 @@ function deleteArticle() {
 function listArticles() {
   $results = array();
   $data = Article::getList();
+  $data2 = Comment::getList();
   $results['articles'] = $data['results'];
   $results['totalRows'] = $data['totalRows'];
   $results['pageTitle'] = "All Articles";
+  $results['comments'] = $data2['results'];
+
 
   if ( isset( $_GET['error'] ) ) {
     if ( $_GET['error'] == "articleNotFound" ) $results['errorMessage'] = "Error: Article not found.";

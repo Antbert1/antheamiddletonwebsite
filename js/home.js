@@ -1,7 +1,19 @@
 var div = document.getElementById("dom-target");
-var numRows = div.textContent.replace(/\s+/, "");
-var ext = document.getElementById("dom-target2").innerHTML.trim();
-console.log(ext);
+try {
+    var numRows = div.textContent.replace(/\s+/, "");
+}
+catch(err) {
+    var numRows = null;
+}
+try {
+    var ext = document.getElementById("dom-target2").innerHTML.trim();
+}
+catch(err) {
+    var ext = null;
+}
+// var numRows = div.textContent.replace(/\s+/, "");
+// var ext = document.getElementById("dom-target2").innerHTML.trim();
+// console.log(ext);
 
 if (numRows > 10) {
   numPages = Math.round(numRows/10);

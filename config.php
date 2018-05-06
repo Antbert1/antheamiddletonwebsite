@@ -12,6 +12,7 @@ define( "ADMIN_PASSWORD", "mypass" );
 //define( "ADMIN_PASSWORD", "$2y$10$KfKIcQbd3/0x5VhLrnd3.OqNHO2udkrkLyUW3nFvKvOq/OnAVP32a" );
 //TODO: Hash the password - "$2y$10$KfKIcQbd3/0x5VhLrnd3.OqNHO2udkrkLyUW3nFvKvOq/OnAVP32a"
 require( CLASS_PATH . "/Article.php" );
+require( CLASS_PATH . "/Comment.php" );
 
 function handleException( $exception ) {
   echo "Sorry, a problem occurred. Please try later.";
