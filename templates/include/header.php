@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <!--Because of redirects, we need to change the extensions on different files-->
-<?php if(isset($_GET['articleId'])) {
+<?php
+
+if(isset($_GET['articleId'])) {
+
   $isPost = TRUE;
+  $isPage = FALSE;
   if ($_GET['action'] == 'post') {
     $extension = '../';
   }
@@ -9,10 +13,25 @@
     $extension = '';
   }
 }
+
+elseif (isset($_GET['startPoint'])){
+  $isPage = TRUE;
+  $isPost = FALSE;
+  if ($_GET['action'] == 'page') {
+    $extension = '../../';
+  }
+  else {
+    $extension = '';
+  }
+}
+
 else {
+  $isPage = FALSE;
   $isPost = FALSE;
   $extension = '';
-}?>
+}
+
+?>
 
 <html lang="en">
   <head>
@@ -32,7 +51,7 @@ else {
       $isPost = FALSE;
     }?>
 
-    <?php if ($isPost == TRUE): ?>
+    <?php if ($isPost == TRUE || $isPage == TRUE): ?>
       <section class="logoSection postLogoSection">
     <?php else: ?>
       <section class="logoSection">
@@ -41,6 +60,8 @@ else {
           <div class="row logoRow">
             <?php if ($isPost == TRUE): ?>
               <a href="../"><img id="logo" src="<?php echo $extension ?>images/websiteImages/anthea-middleton-logo.png" alt="Anthea Middleton" /></a>
+            <?php elseif ($isPage == TRUE): ?>
+              <a href="../../"><img id="logo" src="<?php echo $extension ?>images/websiteImages/anthea-middleton-logo.png" alt="Anthea Middleton" /></a>
             <?php else: ?>
               <a href="./"><img id="logo" src="<?php echo $extension ?>images/websiteImages/anthea-middleton-logo.png" alt="Anthea Middleton" /></a>
             <?php endif ?>
