@@ -14,9 +14,8 @@ catch(err) {
 // var numRows = div.textContent.replace(/\s+/, "");
 // var ext = document.getElementById("dom-target2").innerHTML.trim();
 // console.log(ext);
-
 if (numRows > 10) {
-  numPages = Math.round(numRows/10);
+  numPages = Math.floor(numRows/10);
   for (i=0; i<numPages; i++) {
     pageNum = i + 2;
     // $(".paginatorUL").append('<li>'+pageNum+'</li>');
@@ -25,6 +24,13 @@ if (numRows > 10) {
   }
   $('.paginator').removeClass('hidePaginator');
 }
+
+$( ".popupImage" ).click(function(e) {
+  imgPath = $(this).find('img').attr('src');
+  $('.modalImage').attr("src", imgPath);
+
+  $('#imagePopup').modal('show');
+});
 
   //
   // "<li><a href='.?action=page&amp;startPoint="+pageNum+"'>"+pageNum+"</a></li>"

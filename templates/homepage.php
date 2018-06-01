@@ -96,6 +96,21 @@
       <div id="dom-target2" style="display: none;">
           <?php echo htmlspecialchars($extension);?>
       </div>
+
+      <div id="imagePopup" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-body">
+              <img class="modalImage" src="">
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
     </div>
   </div>
 </section>

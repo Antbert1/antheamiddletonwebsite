@@ -36,12 +36,11 @@
     <!--
               <div class="g-recaptcha" data-sitekey="6LfjePkSAAAAALAHmBmSN1B2EO_qtDAOskpliwTJ"></div> -->
             <input type="submit" class="btn btn-success btn-send" value="Submit">
-
-
           </form>
-      </div>
+        </div>
     </div>
 
+    </div>
 
     </div>
 
@@ -49,6 +48,19 @@
       <div class="col-md-12">
         <p><a href="../">Return to Homepage</a></p>
       </div>
+    </div>
+  </div>
+
+  <div id="imagePopup" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-body">
+          <img class="modalImage" src="">
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
