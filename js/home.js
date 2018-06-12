@@ -33,7 +33,8 @@ $( ".popupImage" ).click(function(e) {
 });
 
 $('.commentTickbox').click(function(e) {
-  debugger;
+  $(this).removeClass('fa-square');
+  $(this).addClass('fa-check-square');
 });
 
   //

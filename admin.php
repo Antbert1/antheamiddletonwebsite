@@ -25,6 +25,10 @@ switch ( $action ) {
   case 'deleteArticle':
     deleteArticle();
     break;
+  case 'toggleComment':
+    echo 'toggle comment called';
+    toggleComment();
+    break;
   default:
     listArticles();
 }
@@ -151,6 +155,13 @@ function editArticle() {
     require( TEMPLATE_PATH . "/admin/editArticle.php" );
   }
 
+}
+
+function toggleComment() {
+  echo "Toggle comment function";
+  $comment = Comment::getById( (int)$_GET['commentId'] );
+  $comment->update(0);
+  header( "Location: admin.php" );
 }
 
 
