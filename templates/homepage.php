@@ -54,7 +54,7 @@
                   <!-- <a href=".?action=post&amp;articleId=<?php echo $article->id?>" class="contReading">Continue Reading...</a> -->
                   <div class="extraInfoWrap">
                     <div class="extraInfo">
-                      <div class="dateInfo"><i class="far fa-calendar-alt"></i>&nbsp;<?php echo date('m.d.y', $article->publicationDate)?></div>
+                      <div class="dateInfo"><i class="far fa-calendar-alt"></i>&nbsp;<?php echo date('d-m-y', $article->publicationDate)?></div>
                       <div class="tagsInfo"><p class="tags"><i class="fas fa-tags"></i>&nbsp;<?php echo htmlspecialchars( $article->tags )?></p></div>
                     </div>
                     <div class="catsInfo"><p class="categories"><span class="catsTitle">Categories:</span> <?php echo htmlspecialchars( $article->categories )?></p></div>
@@ -74,7 +74,7 @@
                   <a href="<?php echo $extension ?>post/<?php echo $article->id?>" class="contReading">Continue Reading...</a>
                   <div class="extraInfoWrap">
                     <div class="extraInfo">
-                      <div class="dateInfo"><i class="far fa-calendar-alt"></i>&nbsp;<?php echo date('m.d.y', $article->publicationDate)?></div>
+                      <div class="dateInfo"><i class="far fa-calendar-alt"></i>&nbsp;<?php echo date('d-m-y', $article->publicationDate)?></div>
                       <div class="tagsInfo"><p class="tags"><i class="fas fa-tags"></i>&nbsp;<?php echo htmlspecialchars( $article->tags )?></p></div>
                     </div>
                     <div class="catsInfo"><p class="categories"><span class="catsTitle">Categories:</span> <?php echo htmlspecialchars( $article->categories )?></p></div>

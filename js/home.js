@@ -32,5 +32,9 @@ $( ".popupImage" ).click(function(e) {
   $('#imagePopup').modal('show');
 });
 
+$('.commentTickbox').click(function(e) {
+  debugger;
+});
+
   //
   // "<li><a href='.?action=page&amp;startPoint="+pageNum+"'>"+pageNum+"</a></li>"

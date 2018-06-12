@@ -33,7 +33,7 @@
 
       <?php foreach ( $results['articles'] as $article ) { ?>
               <tr onclick="location='admin.php?action=editArticle&amp;articleId=<?php echo $article->id?>'">
-                <td><?php echo date('j M Y', $article->publicationDate)?></td>
+                  <td><?php echo date('j M Y', $article->publicationDate)?></td>
                 <td>
                   <?php echo $article->title?>
                 </td>
@@ -51,7 +51,8 @@
             <div class="row commentLine commentLineHeading">
               <div class="col-md-3 commentItem">Publication Date</div>
               <div class="col-md-3 commentItem">Name</div>
-              <div class="col-md-6 commentItem">Content</div>
+              <div class="col-md-5 commentItem">Content</div>
+              <div class="col-md-1 commentItem">D?</div>
             </div>
             <?php foreach ( $results['comments'] as $comment ) { ?>
               <?php
@@ -64,8 +65,20 @@
                 <div class="col-md-3 commentItem">
                   <?php echo $comment->userName?>
                 </div>
-                <div class="col-md-6 commentItem">
+                <div class="col-md-5 commentItem">
                   <?php echo $truncatedContent?>
+                </div>
+                <div class="col-md-1 commentItem">
+                  <div class="checkbox">
+                    <?php if ( $comment->published == 0 ): ?>
+                      <a href="#"><i class="far fa-square notShown commentTickbox"></i></a>
+                    <!-- <label><input type="checkbox" value="" onclick="toggleCheck(<?php echo $comment->id ?>, this)"></label> -->
+                    <?php else : ?>
+                      <a href="#"><i class="far fa-check-square shown commentTickbox"></i></a>
+                      <!-- <label class="active"><input type="checkbox" value="" checked="checked" onclick="toggleCheck(this)"></label> -->
+                    <?php endif; ?>
+                  </div>
+
                 </div>
               </div>
 

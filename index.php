@@ -1,6 +1,5 @@
 <?php
 
-
 require( "config.php" );
 $action = isset( $_GET['action'] ) ? $_GET['action'] : "";
 switch ( $action ) {
@@ -35,7 +34,9 @@ function viewArticle() {
 
   $results = array();
   $results['article'] = Article::getById( (int)$_GET["articleId"] );
+  $results['comments'] = Comment::getListForPost( (int)$_GET["articleId"] )['results'];
   $results['pageTitle'] = $results['article']->title . " | Anthea Middleton";
+  //echo sizeof($results['comments']);
   require( TEMPLATE_PATH . "/viewArticle.php" );
 }
 

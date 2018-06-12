@@ -101,6 +101,31 @@ class Comment
     return ( array ( "results" => $list, "totalRows" => $totalRows[0] ) );
   }
 
+  public static function getListForPost( $postID, $numRows=1000000, $order="publicationDate DESC" ) {
+
+    $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
+    $sql = "SELECT SQL_CALC_FOUND_ROWS *, UNIX_TIMESTAMP(publicationDate) AS publicationDate FROM comments where postID = $postID
+            ORDER BY id ASC LIMIT :numRows";
+
+    $st = $conn->prepare( $sql );
+    $st->bindValue( ":numRows", $numRows, PDO::PARAM_INT );
+    $st->execute();
+    $list = array();
+
+    while ( $row = $st->fetch() ) {
+      $comment = new Comment( $row );
+      $list[] = $comment;
+    }
+
+
+    // Now get the total number of articles that matched the criteria
+    $sql = "SELECT FOUND_ROWS() AS totalRows";
+    $totalRows = $conn->query( $sql )->fetch();
+    $conn = null;
+
+    return ( array ( "results" => $list, "totalRows" => $totalRows[0] ) );
+  }
+
   public static function getListSection( $startPoint, $numRows=1000000, $order="publicationDate DESC" ) {
     $start = $startPoint*10 - 10;
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
