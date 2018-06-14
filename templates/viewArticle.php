@@ -1,6 +1,8 @@
 <?php include "include/header.php";
-
-echo sizeof($results['comments']);
+$commentVal = 0;
+if(isset($_GET['comment'])) {
+  $commentVal = 1;
+}
 ?>
 
 <section class="blogPost">
@@ -46,8 +48,15 @@ echo sizeof($results['comments']);
 <!--
           <div class="g-recaptcha" data-sitekey="6LfjePkSAAAAALAHmBmSN1B2EO_qtDAOskpliwTJ"></div> -->
         <input type="submit" class="btn btn-success btn-send comment-btn" value="Submit">
+        </div>
       </form>
-      </div>
+
+
+      <?php if ( $commentVal == 1 ): ?>
+        <div class="commentThanks">
+          Thank you for your comment. It is awaiting validation. Aren't we all.
+        </div>
+      <?php endif; ?>
     </div>
   </div>
 

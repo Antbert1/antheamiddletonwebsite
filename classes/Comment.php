@@ -198,23 +198,39 @@ class Comment
     $conn = null;
   }
 
-
-  /**
-  * Deletes the current Article object from the database.
-  */
-
   public function delete() {
-
+    echo "DELETE";
     // Does the Article object have an ID?
-    if ( is_null( $this->id ) ) trigger_error ( "Comment::delete(): Attempt to delete an Comment object that does not have its ID property set.", E_USER_ERROR );
+    if ( is_null( $this->id ) ) trigger_error ( "Article::update(): Attempt to update an Article object that does not have its ID property set.", E_USER_ERROR );
 
-    // Delete the Article
+    // Update the Article
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-    $st = $conn->prepare ( "DELETE FROM comments WHERE id = :id LIMIT 1" );
+    // $sql = "UPDATE comments SET published=".$val. "WHERE id = :id";
+    $sql = "DELETE FROM comments WHERE id = :id";
+    echo $sql;
+    $st = $conn->prepare ( $sql );
     $st->bindValue( ":id", $this->id, PDO::PARAM_INT );
     $st->execute();
     $conn = null;
   }
+
+
+  /**
+  * Deletes the current Article object from the database.
+  */
+  // 
+  // public function delete() {
+  //
+  //   // Does the Article object have an ID?
+  //   if ( is_null( $this->id ) ) trigger_error ( "Comment::delete(): Attempt to delete an Comment object that does not have its ID property set.", E_USER_ERROR );
+  //
+  //   // Delete the Article
+  //   $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
+  //   $st = $conn->prepare ( "DELETE FROM comments WHERE id = :id LIMIT 1" );
+  //   $st->bindValue( ":id", $this->id, PDO::PARAM_INT );
+  //   $st->execute();
+  //   $conn = null;
+  // }
 
 }
 

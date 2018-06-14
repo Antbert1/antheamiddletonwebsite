@@ -1,3 +1,7 @@
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();
+});
+
 var div = document.getElementById("dom-target");
 try {
     var numRows = div.textContent.replace(/\s+/, "");
@@ -33,9 +37,27 @@ $( ".popupImage" ).click(function(e) {
 });
 
 $('.commentTickbox').click(function(e) {
-  $(this).removeClass('fa-square');
-  $(this).addClass('fa-check-square');
+  if ($(this).hasClass('fa-square')) {
+    $(this).removeClass('fa-square');
+    $(this).addClass('fa-check-square');
+  } else {
+    $(this).addClass('fa-square');
+    $(this).removeClass('fa-check-square');
+  }
+
 });
 
+//Show delete modal popup
+$('.deleteComment').click(function(e){
+  $('#deleteModal').modal('show');
+  currentPostID = e.target.id;
+  linkString = "admin.php?action=deleteComment&val=0&commentId="+ currentPostID;
+  $('.delCommentBtn').attr('href', linkString);
+});
+
+
+$('.cancelBtn').click(function() {
+  $('#deleteModal').modal('hide');
+})
   //
   // "<li><a href='.?action=page&amp;startPoint="+pageNum+"'>"+pageNum+"</a></li>"

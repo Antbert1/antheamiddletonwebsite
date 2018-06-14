@@ -26,8 +26,10 @@ switch ( $action ) {
     deleteArticle();
     break;
   case 'toggleComment':
-    echo 'toggle comment called';
     toggleComment();
+    break;
+  case 'deleteComment':
+    deleteComment();
     break;
   default:
     listArticles();
@@ -160,7 +162,15 @@ function editArticle() {
 function toggleComment() {
   echo "Toggle comment function";
   $comment = Comment::getById( (int)$_GET['commentId'] );
-  $comment->update(0);
+  $value = (int)$_GET['val'];
+
+  $comment->update($value);
+  header( "Location: admin.php" );
+}
+
+function deleteComment() {
+  $comment = Comment::getById( (int)$_GET['commentId'] );
+  $comment->delete();
   header( "Location: admin.php" );
 }
 

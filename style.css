@@ -264,6 +264,61 @@ a:hover {
 	font-size: 0.9em;
 	color: grey;
 }
+
+.fa-trash-alt{
+	margin-top:10px;
+}
+
+#deleteModal .modal-header {
+	background-color: white;
+	border-bottom: none !important;
+	font-size: 1.3em;
+}
+
+#deleteModal .modal-content {
+	border-left: none !important;
+	border-right: none !important;
+	border-top: 1px solid grey;
+	border-bottom: 1px solid grey;
+	box-shadow: none !important;
+	border-radius: 0;
+
+}
+
+#deleteModal .modal-footer {
+	background-color: white;
+	border: none !important;
+}
+
+#deleteModal .delCommentBtn {
+	background-color: red;
+	border: 1px solid red;
+}
+
+#deleteModal .cancelBtn {
+	background: black;
+	color: white;
+	border: 1px solid black;
+}
+
+.commentContent {
+	text-decoration: none;
+}
+
+.commentLinePublished {
+	background-color: rgb(214,228,224);
+}
+
+.commentThanks {
+	margin-top: 70px;
+	text-align: center;
+	border: 1px solid #db0d66;
+	padding: 20px;
+}
+
+.deleteComment {
+	cursor: pointer;
+}
 /* Style the body and outer container */
 
 /*body {
