@@ -1,5 +1,9 @@
 <?php include "include/header.php";
   $pathToUse = "/antheamiddleton/images/";
+  $pageNumber = '1';
+  if (isset($_GET['startPoint'])) {
+    $pageNumber = $_GET['startPoint'];
+  }
 ?>
 
 <section>
@@ -54,7 +58,7 @@
                   <!-- <a href=".?action=post&amp;articleId=<?php echo $article->id?>" class="contReading">Continue Reading...</a> -->
                   <div class="extraInfoWrap">
                     <div class="extraInfo">
-                      <div class="dateInfo"><i class="far fa-calendar-alt"></i>&nbsp;<?php echo date('m.d.y', $article->publicationDate)?></div>
+                      <div class="dateInfo"><i class="far fa-calendar-alt"></i>&nbsp;<?php echo date('d-m-y', $article->publicationDate)?></div>
                       <div class="tagsInfo"><p class="tags"><i class="fas fa-tags"></i>&nbsp;<?php echo htmlspecialchars( $article->tags )?></p></div>
                     </div>
                     <div class="catsInfo"><p class="categories"><span class="catsTitle">Categories:</span> <?php echo htmlspecialchars( $article->categories )?></p></div>
@@ -74,7 +78,7 @@
                   <a href="<?php echo $extension ?>post/<?php echo $article->id?>" class="contReading">Continue Reading...</a>
                   <div class="extraInfoWrap">
                     <div class="extraInfo">
-                      <div class="dateInfo"><i class="far fa-calendar-alt"></i>&nbsp;<?php echo date('m.d.y', $article->publicationDate)?></div>
+                      <div class="dateInfo"><i class="far fa-calendar-alt"></i>&nbsp;<?php echo date('d-m-y', $article->publicationDate)?></div>
                       <div class="tagsInfo"><p class="tags"><i class="fas fa-tags"></i>&nbsp;<?php echo htmlspecialchars( $article->tags )?></p></div>
                     </div>
                     <div class="catsInfo"><p class="categories"><span class="catsTitle">Categories:</span> <?php echo htmlspecialchars( $article->categories )?></p></div>
@@ -96,6 +100,24 @@
       <div id="dom-target2" style="display: none;">
           <?php echo htmlspecialchars($extension);?>
       </div>
+      <div id="dom-target3" style="display: none;">
+          <?php echo htmlspecialchars($pageNumber);?>
+      </div>
+
+      <div id="imagePopup" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-body">
+              <img class="modalImage" src="">
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
     </div>
   </div>
 </section>
@@ -105,7 +127,7 @@
     <div class="row">
       <div class="col-md-12">
         <ul class="paginatorUL">
-          <li><a href="<?php echo $extension ?>nav/page/1">1</a></li>
+          <li class="firstPageNum"><a href="<?php echo $extension ?>nav/page/1">1</a></li>
 
           <!-- <li><a href=".?action=page&amp;startPoint=1">1</a></li> -->
         </ul>

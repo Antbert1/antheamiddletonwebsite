@@ -33,7 +33,7 @@
 
       <?php foreach ( $results['articles'] as $article ) { ?>
               <tr onclick="location='admin.php?action=editArticle&amp;articleId=<?php echo $article->id?>'">
-                <td><?php echo date('j M Y', $article->publicationDate)?></td>
+                  <td><?php echo date('j M Y', $article->publicationDate)?></td>
                 <td>
                   <?php echo $article->title?>
                 </td>
@@ -47,15 +47,72 @@
 
         <div class="col-md-6">
           <h2>Comments</h2>
-          <?php foreach ( $results['comments'] as $comment ) { ?>
+          <div class="tableDiv">
+            <div class="row commentLine commentLineHeading">
+              <div class="col-md-2 commentItem">Submitted</div>
+              <div class="col-md-2 commentItem">Name</div>
+              <div class="col-md-4 commentItem">Content</div>
+              <div class="col-md-2 commentItem">Delete</div>
+              <div class="col-md-2 commentItem">Show</div>
+            </div>
+            <?php foreach ( $results['comments'] as $comment ) { ?>
+              <?php
+                $truncatedContent =  substr($comment->content, 0, 30)."...";
+              ?>
+              <?php if ( $comment->published == 0 ): ?>
+                <div class="row commentLine commentLineUnpublished">
+              <?php else : ?>
+                <div class="row commentLine commentLinePublished">
+              <?php endif; ?>
+                <div class="col-md-2 commentItem">
+                  <?php echo date('j M Y', $comment->publicationDate)?>
+                </div>
+                <div class="col-md-2 commentItem">
+                  <?php echo $comment->userName?>
+                </div>
+                <div class="col-md-4 commentItem commentContent">
+                    <?php echo $comment->content?>
+                </div>
+                <div class="col-md-2 commentItem">
+                  <i class="far fa-trash-alt deleteComment" id = <?php echo $comment->id?>></i>
+                </div>
+                <div class="col-md-2 commentItem">
+                  <div class="checkbox">
+                    <?php if ( $comment->published == 0 ): ?>
+                      <a href="admin.php?action=toggleComment&amp;val=0&amp;commentId=<?php echo $comment->id?>"><i class="far fa-square notShown commentTickbox"></i></a>
+                    <!-- <label><input type="checkbox" value="" onclick="toggleCheck(<?php echo $comment->id ?>, this)"></label> -->
+                    <?php else : ?>
+                      <a href="admin.php?action=toggleComment&amp;val=1&amp;commentId=<?php echo $comment->id?>"><i class="far fa-check-square shown commentTickbox"></i></a>
+                      <!-- <label class="active"><input type="checkbox" value="" checked="checked" onclick="toggleCheck(this)"></label> -->
+                    <?php endif; ?>
+                  </div>
 
-                      <?php echo $comment->userName?>
+                </div>
+              </div>
 
-
-          <?php } ?>
+            <?php } ?>
+          </div>
         </div>
       </div>
 
+      <div id="deleteModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-header">
+            Delete Comment
+          </div>
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-body">
+              Are you sure?
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a class="btn btn-primary delCommentBtn">Delete</a>
+            <button class="btn cancelBtn btn-default">Cancel</button>
+          </div>
+
+        </div>
+      </div>
 
 
       <p><?php echo $results['totalRows']?> article<?php echo ( $results['totalRows'] != 1 ) ? 's' : '' ?> in total.</p>
