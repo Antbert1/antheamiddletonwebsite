@@ -1,5 +1,9 @@
 <?php include "include/header.php";
   $pathToUse = "/antheamiddleton/images/";
+  $pageNumber = '1';
+  if (isset($_GET['startPoint'])) {
+    $pageNumber = $_GET['startPoint'];
+  }
 ?>
 
 <section>
@@ -96,6 +100,9 @@
       <div id="dom-target2" style="display: none;">
           <?php echo htmlspecialchars($extension);?>
       </div>
+      <div id="dom-target3" style="display: none;">
+          <?php echo htmlspecialchars($pageNumber);?>
+      </div>
 
       <div id="imagePopup" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -120,7 +127,7 @@
     <div class="row">
       <div class="col-md-12">
         <ul class="paginatorUL">
-          <li><a href="<?php echo $extension ?>nav/page/1">1</a></li>
+          <li class="firstPageNum"><a href="<?php echo $extension ?>nav/page/1">1</a></li>
 
           <!-- <li><a href=".?action=page&amp;startPoint=1">1</a></li> -->
         </ul>

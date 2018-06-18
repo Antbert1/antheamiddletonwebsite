@@ -3,6 +3,17 @@ $commentVal = 0;
 if(isset($_GET['comment'])) {
   $commentVal = 1;
 }
+
+$commentCount = 0;
+
+if ( sizeof($results['comments']) > 0 ) {
+  foreach ( $results['comments'] as $comment ) {
+    if ($comment->published == 1) {
+      $commentCount = $commentCount + 1;
+      break;
+    }
+  }
+}
 ?>
 
 <section class="blogPost">
@@ -61,11 +72,12 @@ if(isset($_GET['comment'])) {
   </div>
 
 
-  <?php if ( sizeof($results['comments']) > 0 ) { ?>
+  <?php if ( $commentCount > 0 ) { ?>
     <div class="row commentRow">
       <div class="col-md-8">
-          <h2>Comments</h2>
+        <h2>Comments</h2>
         <?php foreach ( $results['comments'] as $comment ) { ?>
+          <?php if ( $comment->published == 1): ?>
           <div class="commentDiv">
             <div class="commentTopRow">
               <h3>
@@ -77,6 +89,7 @@ if(isset($_GET['comment'])) {
             </div>
             <?php echo $comment->content?>
           </div>
+          <?php endif; ?>
         <?php } ?>
       </div>
     </div>

@@ -22,8 +22,16 @@ a {
   color: #333;
 }
 
+a, a:hover, a:active, a:visited, a:focus {
+    text-decoration:none;
+}
+
 .commentOption a {
 	color: rgb(141,141,141) !important;
+}
+
+a:visited, a:focus {
+	color: #333;
 }
 
 .btn {
@@ -211,7 +219,29 @@ a:hover {
 	display:none;
 }
 
+.paginatorUL {
+	list-style-type: none;
+	padding-left: 0;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
 
+.paginatorUL li {
+	display:inline;
+	margin-left: 15px;
+	margin-right:15px;
+	padding: 10px;
+}
+
+.activeLI {
+	background-color: #db0d66;
+	border: 1px solid #db0d66;
+	border-radius: 2px;
+}
+
+.activeLI a {
+	color: white;
+}
 /*Footer*/
 .footer{
   padding-top:20px;
@@ -226,6 +256,10 @@ a:hover {
 
 #imagePopup .modal-body img{
 	width: 100%;
+}
+
+.popupImage {
+	cursor: pointer;
 }
 
 /*COMMENTS*/
@@ -311,6 +345,7 @@ a:hover {
 
 .commentThanks {
 	margin-top: 70px;
+	margin-bottom: 20px;
 	text-align: center;
 	border: 1px solid #db0d66;
 	padding: 20px;

@@ -15,6 +15,12 @@ try {
 catch(err) {
     var ext = null;
 }
+
+var setPageNum = parseInt(document.getElementById('dom-target3').innerHTML.trim());
+
+if (setPageNum == 1) {
+  $('.firstPageNum').addClass('activeLI');
+}
 // var numRows = div.textContent.replace(/\s+/, "");
 // var ext = document.getElementById("dom-target2").innerHTML.trim();
 // console.log(ext);
@@ -24,7 +30,12 @@ if (numRows > 10) {
     pageNum = i + 2;
     // $(".paginatorUL").append('<li>'+pageNum+'</li>');
     // $(".paginatorUL").append("<li><a href='.?action=page&amp;startPoint="+pageNum+"'>"+pageNum+"</a></li>");
-    $(".paginatorUL").append("<li><a href='"+ext+"nav/page/"+pageNum+"'>"+pageNum+"</a></li>");
+    if (setPageNum == pageNum) {
+      $(".paginatorUL").append("<li class='activeLI'><a href='"+ext+"nav/page/"+pageNum+"'>"+pageNum+"</a></li>");
+    } else {
+      $(".paginatorUL").append("<li><a href='"+ext+"nav/page/"+pageNum+"'>"+pageNum+"</a></li>");
+    }
+
   }
   $('.paginator').removeClass('hidePaginator');
 }
