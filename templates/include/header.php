@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+
+<?php
+if(isset($_GET['articleId'])) {
+  $isPost = TRUE;
+}
+else {
+  $isPost = FALSE;
+}
+?>
 <!--Because of redirects, we need to change the extensions on different files-->
 <?php
 
@@ -11,6 +20,16 @@ if(isset($_GET['articleId'])) {
   }
   else {
     $extension = '';
+  }
+  if ($results['article']->image) {
+    $imageVals  = $results['article']->image;
+    $imageSplit = explode(" ", $imageVals);
+    if (sizeof($imageSplit) > 1) {
+      $imagePath = $imageSplit[0] . '/' . $imageSplit[1];
+    }
+    else {
+      $imagePath = null;
+    }
   }
 }
 
@@ -41,15 +60,20 @@ else {
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Roboto:400,700" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo $extension ?>style.css" />
+    <?php if ($isPost == TRUE): ?>
+      <meta property="og:url" content="http://www.antheamiddleton.com/post/<?php echo $_GET['articleId']?>" />
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content="Anthea Middleton" />
+      <meta property="og:description" content="<?php echo $results['article']->summary ?>" />
+      <?php if ($imagePath !== null): ?>
+        <meta property="og:image" content="http://localhost/antheamiddleton/images/<?php echo $imagePath ?>" />
+      <?php endif ?>
+
+
+    <?php endif ?>
   </head>
   <body>
 
-    <?php if(isset($_GET['articleId'])) {
-      $isPost = TRUE;
-    }
-    else {
-      $isPost = FALSE;
-    }?>
 
     <?php if ($isPost == TRUE || $isPage == TRUE): ?>
       <section class="logoSection postLogoSection">

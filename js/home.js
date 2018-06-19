@@ -16,7 +16,12 @@ catch(err) {
     var ext = null;
 }
 
-var setPageNum = parseInt(document.getElementById('dom-target3').innerHTML.trim());
+try {
+  var setPageNum = parseInt(document.getElementById('dom-target3').innerHTML.trim());
+}
+catch {
+  var setPageNum = null;
+}
 
 if (setPageNum == 1) {
   $('.firstPageNum').addClass('activeLI');
