@@ -12,6 +12,9 @@ switch ( $action ) {
   case 'page':
     viewListSection();
     break;
+  case 'cat':
+    viewCatSection();
+    break;
   default:
     homepage();
 }
@@ -55,12 +58,46 @@ function viewListSection() {
   require( TEMPLATE_PATH . "/homepage.php" );
 }
 
+function viewCatSection() {
+  $results = array();
+  $category = $_GET["cat"];
+  $data = Article::getCatList($category);
+  $results['articles'] = $data['results'];
+  $results['totalRows'] = $data['totalRows'];
+  $results['pageTitle'] = "Anthea Middleton";
+  require( TEMPLATE_PATH . "/homepage.php" );
+}
+
 function homepage() {
   $results = array();
+  $resultsCats = array();
+  $categories = array();
+  $newCats = array();
+  // $results2 = array();
   $data = Article::getList( HOMEPAGE_NUM_ARTICLES );
   $results['articles'] = $data['results'];
   $results['totalRows'] = $data['totalRows'];
   $results['pageTitle'] = "Anthea Middleton";
+
+  $data2 = Article::getList();
+  $resultsCats['articlesAll'] = $data2['results'];
+  // $categories = Article::getCats();
+  // $results2 = $categories['cats'];
+  //GET ALL ARTICLES INSTEAD OF TEN
+  foreach ($resultsCats['articlesAll'] as $article) {
+    array_push($categories, $article->categories);
+  }
+
+  foreach($categories as $cat) {
+    $exploded = explode(",", $cat);
+    foreach ($exploded as $individualCat) {
+      array_push($newCats, ucfirst(trim($individualCat)));
+    }
+  }
+
+  $newCatsUnique = array_unique($newCats);
+
+
   require( TEMPLATE_PATH . "/homepage.php" );
 }
 

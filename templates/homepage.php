@@ -92,7 +92,15 @@
         </ul>
       </div>
       <div class="col-md-4">
-
+        <div class="dropdown">
+          <a class="dropdown-toggle" type="button" data-toggle="dropdown">Category Filter
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <?php foreach ( $newCatsUnique as $cat ) { ?>
+              <li><a href="<?php echo $extension ?>?action=cat&cat=<?php echo $cat ?>"><?php echo $cat ?></a></li>
+            <?php } ?>
+          </ul>
+        </div>
       </div>
       <div id="dom-target" style="display: none;">
           <?php echo htmlspecialchars($results['totalRows']);?>
