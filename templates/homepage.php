@@ -100,18 +100,25 @@
         </ul>
       </div>
       <div class="col-md-4 RHSSection">
-        <!-- <div class="dropdown cat-dropdown-div">
-          <h3>Categories</h3>
-          <p>Filter categories with the aptly named...<p>
-          <a class="dropdown-toggle cat-dropdown-button" type="button" data-toggle="dropdown">Category Filter
-          <span class="caret"></span></a>
-          <ul class="dropdown-menu cat-dropdown paginatorUL">
-            <?php foreach ( $newCatsUnique as $cat ) { ?>
-              <li><a href="<?php echo $extension ?>category/<?php echo $cat ?>"><?php echo $cat ?></a></li>
-            <?php } ?>
+        <div class="links homeLinks">
+          <h3>Links I Like</h3>
+          <ul class="linkslist">
+            <li><a href="https://ohmygsoh.wordpress.com/" target="_blank">Oh My Gsoh</a> - Blog about the perils of dating mingled with literary delight</li>
+            <li><a href="https://keevaoshea.blogspot.com/" target="_blank">Keeva O'Shea</a> - Witty observations about travel, life and accidental gin festivals</li>
+            <li><a href="http://eileenkeane.ie/blog/" target="_blank">Eileen Keane</a> - Blog by author and artist Eileen Keane</li>
+            <li><a href="http://francesquinn.blogspot.com/" target="_blank">Flying Away from Reality</a> - Blog by Frances Quinn</li>
           </ul>
-        </div> -->
+        </div>
+        <div class="divider"></div>
+        <div class="twitterTimeline">
+          <h3>Sometimes I Tweet</h3>
+          <p>Mostly I just retweet <a href="https://twitter.com/dog_feelings" target="_blank">@thoughsofdog</a> though, so you could just follow them.</p>
+          <a href="https://twitter.com/antheamiddleton?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @antheamiddleton</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+        <div class="divider"></div>
         <div class="dropdown cat-dropdown-div menu-dropdown-div">
+          <h3>Filter Categories</h3>
+          <p>Filter categories with the aptly named...</p>
           <a class="dropdown-toggle cat-dropdown-button" type="button" data-toggle="dropdown">Category Filter
           <span class="caret"></span></a>
           <ul class="dropdown-menu cat-dropdown">

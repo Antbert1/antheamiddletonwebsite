@@ -104,8 +104,24 @@ else {
             <nav class="navbar navbar-default">
               <div class="container-fluid">
                 <ul class="nav navbar-nav">
-                  <li><a href="#">BLOG</a></li>
-                  <li><a href="#">ABOUT</a></li>
+                  <li>
+                    <?php if ($isPost == TRUE || $isCat == TRUE): ?>
+                      <a href="../">BLOG</a>
+                    <?php elseif ($isPage == TRUE): ?>
+                      <a href="../../">BLOG</a>
+                    <?php else: ?>
+                      <a href="./">BLOG</a>
+                    <?php endif ?>
+                  </li>
+                  <li>
+                    <?php if ($isPost == TRUE || $isCat == TRUE): ?>
+                      <a href="../about">ABOUT</a>
+                    <?php elseif ($isPage == TRUE): ?>
+                      <a href="../../about">ABOUT</a>
+                    <?php else: ?>
+                      <a href="./about">ABOUT</a>
+                    <?php endif ?>
+                  </li>
                 </ul>
               </div>
             </nav>

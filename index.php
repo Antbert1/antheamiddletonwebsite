@@ -11,6 +11,9 @@ switch ( $action ) {
   case 'archive':
     archive();
     break;
+  case 'about':
+    about();
+    break;
   case 'post':
     viewArticle();
     break;
@@ -37,6 +40,12 @@ function archive() {
   $results['totalRows'] = $data['totalRows'];
   $results['pageTitle'] = "Article Archive | Anthea Middleton";
   require( TEMPLATE_PATH . "/archive.php" );
+}
+
+function about() {
+  $results = array();
+  $results['pageTitle'] = "About | Anthea Middleton";
+  require( TEMPLATE_PATH . "/about.php" );
 }
 
 function viewArticle() {

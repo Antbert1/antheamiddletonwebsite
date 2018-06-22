@@ -32,28 +32,6 @@ if ( sizeof($results['comments']) > 0 ) {
     </div>
     <div class="row">
       <div class="col-md-8 blog-content-row">
-        <?php echo $results['article']->content?>
-      </div>
-      <div class="col-md-4 RHSSection">
-        <div class="links">
-          <h3>Links I Like</h3>
-          <ul class="linkslist">
-            <li><a href="https://ohmygsoh.wordpress.com/" target="_blank">Oh My Gsoh</a> - Blog about the perils of dating mingled with literary delight</li>
-            <li><a href="https://keevaoshea.blogspot.com/" target="_blank">Keeva O'Shea</a> - Witty observations about travel, life and accidental gin festivals</li>
-            <li><a href="http://eileenkeane.ie/blog/" target="_blank">Eileen Keane</a> - Blog by author and artist Eileen Keane</li>
-            <li><a href="http://francesquinn.blogspot.com/" target="_blank">Flying Away from Reality</a> - Blog by Frances Quinn</li>
-          </ul>
-        </div>
-        <div class="divider"></div>
-        <div class="twitterTimeline">
-          <h3>Sometimes I Tweet</h3>
-          <p>Mostly I just retweet <a href="https://twitter.com/dog_feelings" target="_blank">@thoughsofdog</a> though, so you could just follow them.</p>
-          <a href="https://twitter.com/antheamiddleton?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @antheamiddleton</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-        </div>
-    </div>
-
-    <div class="row commentSection">
-      <div class="col-md-8">
         <div class="nextPrevBtns">
           <!-- <?php if ( $results['article']->id ): ?>
             <div class="prev">
@@ -74,6 +52,81 @@ if ( sizeof($results['comments']) > 0 ) {
             </div>
           <?php endif; ?> -->
         </div>
+        <?php echo $results['article']->content?>
+        <div class="commentSection">
+          <a name="commentAnchor">
+            <h2>Leave a Comment</h2>
+          </a>
+          <form name="contactform" method="post" action="../comment.php?postID=<?php echo $results['article']->id?>">
+            <div class="messages"></div>
+            <div class="controls">
+
+              <div class="form-group">
+                <label for="userName">Name</label>
+                <input id="form_name" type="text" name="userName" maxlength="50" size="30" class="form-control" placeholder="Enter your name *" required="required" data-error="Firstname is required.">
+                <div class="help-block with-errors"></div>
+              </div>
+
+              <div class="form-group">
+                <label for="content">Comment</label>
+                <textarea id="form_message" name="content" maxlength="1000" cols="25" rows="6" class="form-control" placeholder="Type message here *" rows="4" required="required" data-error="Please,leave us a message."></textarea>
+                <div class="help-block with-errors"></div>
+              </div>
+    <!--
+              <div class="g-recaptcha" data-sitekey="6LfjePkSAAAAALAHmBmSN1B2EO_qtDAOskpliwTJ"></div> -->
+            <input type="submit" class="btn btn-success btn-send comment-btn" value="Submit">
+            </div>
+          </form>
+
+
+          <?php if ( $commentVal == 1 ): ?>
+            <div class="commentThanks">
+              Thank you for your comment. It is awaiting validation. Aren't we all.
+            </div>
+          <?php endif; ?>
+        </div>
+        <?php if ( $commentCount > 0 ) { ?>
+          <div class="commentRow">
+              <h2>Comments</h2>
+              <?php foreach ( $results['comments'] as $comment ) { ?>
+                <?php if ( $comment->published == 1): ?>
+                <div class="commentDiv">
+                  <div class="commentTopRow">
+                    <h3>
+                      <?php echo $comment->userName ?>
+                    </h3>
+                    <div class="commentDate">
+                      <?php echo date('j F Y', $comment->publicationDate)?>
+                    </div>
+                  </div>
+                  <?php echo $comment->content?>
+                </div>
+                <?php endif; ?>
+              <?php } ?>
+            </div>
+        <?php } ?>
+      </div>
+      <div class="col-md-4 RHSSection">
+        <div class="links">
+          <h3>Links I Like</h3>
+          <ul class="linkslist">
+            <li><a href="https://ohmygsoh.wordpress.com/" target="_blank">Oh My Gsoh</a> - Blog about the perils of dating mingled with literary delight</li>
+            <li><a href="https://keevaoshea.blogspot.com/" target="_blank">Keeva O'Shea</a> - Witty observations about travel, life and accidental gin festivals</li>
+            <li><a href="http://eileenkeane.ie/blog/" target="_blank">Eileen Keane</a> - Blog by author and artist Eileen Keane</li>
+            <li><a href="http://francesquinn.blogspot.com/" target="_blank">Flying Away from Reality</a> - Blog by Frances Quinn</li>
+          </ul>
+        </div>
+        <div class="divider"></div>
+        <div class="twitterTimeline">
+          <h3>Sometimes I Tweet</h3>
+          <p>Mostly I just retweet <a href="https://twitter.com/dog_feelings" target="_blank">@thoughsofdog</a> though, so you could just follow them.</p>
+          <a href="https://twitter.com/antheamiddleton?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @antheamiddleton</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+    </div>
+
+    <!-- <div class="row commentSection">
+      <div class="col-md-8">
+
       <a name="commentAnchor">
         <h2>Leave a Comment</h2>
       </a>
@@ -92,8 +145,8 @@ if ( sizeof($results['comments']) > 0 ) {
             <textarea id="form_message" name="content" maxlength="1000" cols="25" rows="6" class="form-control" placeholder="Type message here *" rows="4" required="required" data-error="Please,leave us a message."></textarea>
             <div class="help-block with-errors"></div>
           </div>
-<!--
-          <div class="g-recaptcha" data-sitekey="6LfjePkSAAAAALAHmBmSN1B2EO_qtDAOskpliwTJ"></div> -->
+
+          <div class="g-recaptcha" data-sitekey="6LfjePkSAAAAALAHmBmSN1B2EO_qtDAOskpliwTJ"></div>
         <input type="submit" class="btn btn-success btn-send comment-btn" value="Submit">
         </div>
       </form>
@@ -129,7 +182,7 @@ if ( sizeof($results['comments']) > 0 ) {
         <?php } ?>
       </div>
     </div>
-  <?php } ?>
+  <?php } ?> -->
 
     <div class="row">
       <div class="col-md-12">

@@ -419,6 +419,10 @@ a:hover {
 .linkslist a {
 	text-decoration: underline;
 }
+
+.homeLinks {
+	padding-top: 20px;
+}
 /* Style the body and outer container */
 
 /*body {
@@ -743,6 +747,16 @@ tr:hover {
   color: #fff;
 }
 
+.aboutImage {
+	width: 100%;
+	padding-top:20px;
+}
+
+.aboutBlurb {
+	padding-top: 20px;
+	padding-bottom:200px;
+}
+
 /*Media Queries*/
 @media only screen and (max-width: 800px) {
   .logoSection a{
@@ -762,6 +776,12 @@ tr:hover {
 @media only screen and (min-width: 555px) {
     .smallScreenSize {
 			display:none;
+		}
+}
+
+@media only screen and (max-width: 992px) {
+    .aboutBlurb {
+			padding-bottom:20px;
 		}
 }
 
