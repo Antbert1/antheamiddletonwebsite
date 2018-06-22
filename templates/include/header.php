@@ -10,7 +10,7 @@ else {
 ?>
 <!--Because of redirects, we need to change the extensions on different files-->
 <?php
-
+$isCat = FALSE;
 if(isset($_GET['articleId'])) {
 
   $isPost = TRUE;
@@ -42,6 +42,12 @@ elseif (isset($_GET['startPoint'])){
   else {
     $extension = '';
   }
+}
+
+elseif (isset($_GET['category'])) {
+  $isPage = FALSE;
+  $isCat = TRUE;
+  $extension = '../';
 }
 
 else {
@@ -82,7 +88,7 @@ else {
     <?php endif ?>
         <div class="container">
           <div class="row logoRow">
-            <?php if ($isPost == TRUE): ?>
+            <?php if ($isPost == TRUE || $isCat == TRUE): ?>
               <a href="../"><img id="logo" src="<?php echo $extension ?>images/websiteImages/anthea-middleton-logo.png" alt="Anthea Middleton" /></a>
             <?php elseif ($isPage == TRUE): ?>
               <a href="../../"><img id="logo" src="<?php echo $extension ?>images/websiteImages/anthea-middleton-logo.png" alt="Anthea Middleton" /></a>

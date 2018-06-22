@@ -233,6 +233,20 @@ a:hover {
 	padding: 10px;
 }
 
+.cat-dropdown {
+	max-height: 300px;
+	overflow-y: auto;
+}
+
+.cat-dropdown-button {
+	cursor: pointer;
+	padding: 5px;
+	border-bottom: 2px solid #db0d66;
+}
+
+.cat-dropdown-div {
+	margin-top: 40px;
+}
 .activeLI {
 	background-color: #db0d66;
 	border: 1px solid #db0d66;

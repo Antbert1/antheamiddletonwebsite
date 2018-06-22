@@ -1,8 +1,16 @@
 <?php include "include/header.php";
   $pathToUse = "/antheamiddleton/images/";
   $pageNumber = '1';
+  $catPage = false;
+  $catAll = false;
   if (isset($_GET['startPoint'])) {
     $pageNumber = $_GET['startPoint'];
+  }
+  if (isset($_GET['cat'])) {
+    if ($_GET['cat'] == 'All') {
+      $catAll = true;
+    }
+    $catPage = true;
   }
 ?>
 
@@ -92,12 +100,13 @@
         </ul>
       </div>
       <div class="col-md-4">
-        <div class="dropdown">
-          <a class="dropdown-toggle" type="button" data-toggle="dropdown">Category Filter
+        <div class="dropdown cat-dropdown-div">
+          <a class="dropdown-toggle cat-dropdown-button" type="button" data-toggle="dropdown">Category Filter
           <span class="caret"></span></a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu cat-dropdown">
             <?php foreach ( $newCatsUnique as $cat ) { ?>
-              <li><a href="<?php echo $extension ?>?action=cat&cat=<?php echo $cat ?>"><?php echo $cat ?></a></li>
+              <!-- <li><a href="<?php echo $extension ?>?action=cat&cat=<?php echo $cat ?>"><?php echo $cat ?></a></li> -->
+              <li><a href="<?php echo $extension ?>category/<?php echo $cat ?>"><?php echo $cat ?></a></li>
             <?php } ?>
           </ul>
         </div>
@@ -129,20 +138,22 @@
     </div>
   </div>
 </section>
+<?php if($catPage == false || $catAll == true) :  ?>
+  <section class="paginator hidePaginator">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <ul class="paginatorUL">
+            <li class="firstPageNum"><a href="<?php echo $extension ?>nav/page/1">1</a></li>
 
-<section class="paginator hidePaginator">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <ul class="paginatorUL">
-          <li class="firstPageNum"><a href="<?php echo $extension ?>nav/page/1">1</a></li>
-
-          <!-- <li><a href=".?action=page&amp;startPoint=1">1</a></li> -->
-        </ul>
+            <!-- <li><a href=".?action=page&amp;startPoint=1">1</a></li> -->
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+  <?php endif; ?>
+
 
 
 

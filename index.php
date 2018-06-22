@@ -2,6 +2,11 @@
 
 require( "config.php" );
 $action = isset( $_GET['action'] ) ? $_GET['action'] : "";
+
+$catAll = false;
+if (isset($_GET['category'])) {
+  $catAll = $_GET['category'];
+}
 switch ( $action ) {
   case 'archive':
     archive();
@@ -12,8 +17,13 @@ switch ( $action ) {
   case 'page':
     viewListSection();
     break;
-  case 'cat':
-    viewCatSection();
+  case 'category':
+    if ($catAll == 'All') {
+      homepage();
+    }
+    else {
+      viewCatSection();
+    }
     break;
   default:
     homepage();
@@ -44,27 +54,75 @@ function viewArticle() {
 }
 
 function viewListSection() {
-//   foreach($_GET as $key => $value)
-// {
-//    echo 'Key = ' . $key . '<br />';
-//    echo 'Value= ' . $value;
-// }
+  $resultsCats = array();
+  $categories = array();
+  $newCats = array();
+
   $startPoint = $_GET["startPoint"];
   $results = array();
   $data = Article::getListSection( $startPoint, HOMEPAGE_NUM_ARTICLES );
   $results['articles'] = $data['results'];
   $results['totalRows'] = $data['totalRows'];
   $results['pageTitle'] = "Anthea Middleton";
+  $data2 = Article::getList();
+  $resultsCats['articlesAll'] = $data2['results'];
+  // $categories = Article::getCats();
+  // $results2 = $categories['cats'];
+  //GET ALL ARTICLES INSTEAD OF TEN
+  foreach ($resultsCats['articlesAll'] as $article) {
+    array_push($categories, $article->categories);
+  }
+
+  foreach($categories as $cat) {
+    $exploded = explode(",", $cat);
+    foreach ($exploded as $individualCat) {
+      array_push($newCats, ucfirst(trim($individualCat)));
+    }
+  }
+
+  $newCatsUnique = array_unique($newCats);
+  sort($newCatsUnique);
+  array_unshift($newCatsUnique, "All");
   require( TEMPLATE_PATH . "/homepage.php" );
 }
 
 function viewCatSection() {
   $results = array();
-  $category = $_GET["cat"];
+  $category = $_GET["category"];
+
+  if ($category == 'All') {
+    homepage();
+    return;
+  }
+
+  $resultsCats = array();
+  $categories = array();
+  $newCats = array();
   $data = Article::getCatList($category);
   $results['articles'] = $data['results'];
   $results['totalRows'] = $data['totalRows'];
   $results['pageTitle'] = "Anthea Middleton";
+
+  $data2 = Article::getList();
+  $resultsCats['articlesAll'] = $data2['results'];
+  // $categories = Article::getCats();
+  // $results2 = $categories['cats'];
+  //GET ALL ARTICLES INSTEAD OF TEN
+  foreach ($resultsCats['articlesAll'] as $article) {
+    array_push($categories, $article->categories);
+  }
+
+  foreach($categories as $cat) {
+    $exploded = explode(",", $cat);
+    foreach ($exploded as $individualCat) {
+      array_push($newCats, ucfirst(trim($individualCat)));
+    }
+  }
+
+  $newCatsUnique = array_unique($newCats);
+  sort($newCatsUnique);
+  array_unshift($newCatsUnique, "All");
+
   require( TEMPLATE_PATH . "/homepage.php" );
 }
 
@@ -96,6 +154,8 @@ function homepage() {
   }
 
   $newCatsUnique = array_unique($newCats);
+  sort($newCatsUnique);
+  array_unshift($newCatsUnique, "All");
 
 
   require( TEMPLATE_PATH . "/homepage.php" );

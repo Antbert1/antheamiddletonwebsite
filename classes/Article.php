@@ -103,13 +103,14 @@ class Article
 
   public static function getCatList( $category, $numRows=1000000, $order="publicationDate DESC" ) {
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-    // $sql = "SELECT SQL_CALC_FOUND_ROWS *, UNIX_TIMESTAMP(publicationDate) AS publicationDate
-    //         FROM `articles` WHERE categories LIKE '%costa RIca%'
-    //         ORDER BY " . mysql_escape_string($order) . " LIMIT :numRows";
 
     $sql = "SELECT SQL_CALC_FOUND_ROWS *, UNIX_TIMESTAMP(publicationDate) AS publicationDate
-            FROM `articles` WHERE categories LIKE '% ".$category."%'
+            FROM `articles` WHERE categories LIKE '%".$category."%'
             ORDER BY " . mysql_escape_string($order) . " LIMIT :numRows";
+
+    // $sql = "SELECT SQL_CALC_FOUND_ROWS *, UNIX_TIMESTAMP(publicationDate) AS publicationDate
+    //         FROM `articles` WHERE categories LIKE '% ".$category."%'
+    //         ORDER BY " . mysql_escape_string($order) . " LIMIT :numRows";
 
     $st = $conn->prepare( $sql );
     $st->bindValue( ":numRows", $numRows, PDO::PARAM_INT );
