@@ -154,7 +154,7 @@ a:hover {
 .extraInfoWrap{
   font-size:0.9em;
   color:rgb(141,141,141);
-  position: absolute;
+  /* position: absolute; */
   bottom: 0;
 }
 
@@ -210,8 +210,20 @@ a:hover {
 }
 
 .postTitle{
-  border-bottom:1px solid rgb(223,223,223);
+  /* border-bottom:1px solid rgb(223,223,223); */
   margin-bottom:20px;
+}
+
+.spacer {
+	min-width:2px;
+}
+
+.divider {
+	border-bottom:1px solid rgb(223,223,223);
+	padding-top:10px;
+	padding-bottom:10px;
+	margin: 0 auto;
+	width: 80%;
 }
 
 /*Paginator*/
@@ -219,18 +231,28 @@ a:hover {
 	display:none;
 }
 
-.paginatorUL {
+.normalScreenSize .paginatorUL {
 	list-style-type: none;
 	padding-left: 0;
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
 
-.paginatorUL li {
+.menu-dropdown-div .paginatorUL {
+	list-style-type: none;
+	max-width:100px !important;
+	min-width:10px !important;
+}
+
+.normalScreenSize .paginatorUL li {
 	display:inline;
 	margin-left: 15px;
 	margin-right:15px;
 	padding: 10px;
+}
+
+.menu-dropdown-div .paginatorUL li {
+	display: inline;
 }
 
 .cat-dropdown {
@@ -247,19 +269,27 @@ a:hover {
 .cat-dropdown-div {
 	margin-top: 40px;
 }
-.activeLI {
+
+.normalScreenSize .activeLI {
 	background-color: #db0d66;
 	border: 1px solid #db0d66;
 	border-radius: 2px;
 }
 
-.activeLI a {
+.normalScreenSize .activeLI a {
 	color: white;
+}
+
+.smallScreenSize {
+	margin-bottom: 20px;
 }
 /*Footer*/
 .footer{
   padding-top:20px;
   border-top:1px solid rgb(223,223,223);
+	padding-bottom:20px;
+	text-align: right;
+	font-size: 0.9em;
 }
 
 
@@ -367,6 +397,27 @@ a:hover {
 
 .deleteComment {
 	cursor: pointer;
+}
+
+.blog-content-row {
+	border-right: 1px solid rgb(223,223,223)
+}
+
+.RHSSection h3 {
+	font-size: 1.3em;
+}
+
+.RHSSection .linkslist {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+.linkslist li {
+	padding-bottom: 10px;
+}
+
+.linkslist a {
+	text-decoration: underline;
 }
 /* Style the body and outer container */
 
@@ -700,4 +751,27 @@ tr:hover {
   .navSection a{
     margin-left:40px;
   }
+}
+
+@media only screen and (max-width: 555px) {
+    .normalScreenSize {
+			display:none;
+		}
+}
+
+@media only screen and (min-width: 555px) {
+    .smallScreenSize {
+			display:none;
+		}
+}
+
+@media only screen and (max-width: 416px) {
+    #logo {
+			width: 250px;
+			height: auto;
+		}
+		.commentTopRow {
+			display:block;
+			margin-bottom:20px;
+		}
 }

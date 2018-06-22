@@ -99,13 +99,23 @@
           <?php } ?>
         </ul>
       </div>
-      <div class="col-md-4">
-        <div class="dropdown cat-dropdown-div">
+      <div class="col-md-4 RHSSection">
+        <!-- <div class="dropdown cat-dropdown-div">
+          <h3>Categories</h3>
+          <p>Filter categories with the aptly named...<p>
+          <a class="dropdown-toggle cat-dropdown-button" type="button" data-toggle="dropdown">Category Filter
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu cat-dropdown paginatorUL">
+            <?php foreach ( $newCatsUnique as $cat ) { ?>
+              <li><a href="<?php echo $extension ?>category/<?php echo $cat ?>"><?php echo $cat ?></a></li>
+            <?php } ?>
+          </ul>
+        </div> -->
+        <div class="dropdown cat-dropdown-div menu-dropdown-div">
           <a class="dropdown-toggle cat-dropdown-button" type="button" data-toggle="dropdown">Category Filter
           <span class="caret"></span></a>
           <ul class="dropdown-menu cat-dropdown">
             <?php foreach ( $newCatsUnique as $cat ) { ?>
-              <!-- <li><a href="<?php echo $extension ?>?action=cat&cat=<?php echo $cat ?>"><?php echo $cat ?></a></li> -->
               <li><a href="<?php echo $extension ?>category/<?php echo $cat ?>"><?php echo $cat ?></a></li>
             <?php } ?>
           </ul>
@@ -138,16 +148,23 @@
     </div>
   </div>
 </section>
-<?php if($catPage == false || $catAll == true) :  ?>
+<?php if($catPage == false || $catAll == true) : ?>
   <section class="paginator hidePaginator">
     <div class="container">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 normalScreenSize">
           <ul class="paginatorUL">
             <li class="firstPageNum"><a href="<?php echo $extension ?>nav/page/1">1</a></li>
-
-            <!-- <li><a href=".?action=page&amp;startPoint=1">1</a></li> -->
           </ul>
+        </div>
+        <div class="col-md-12 smallScreenSize">
+          <div class="dropup cat-dropdown-div menu-dropdown-div">
+            <a class="dropdown-toggle cat-dropdown-button" type="button" data-toggle="dropdown">Page Number
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu cat-dropdown paginatorUL">
+                <li class="firstPageNum"><a href="<?php echo $extension ?>nav/page/1">1</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

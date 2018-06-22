@@ -1,6 +1,6 @@
-$(document).ready(function(){
-    $('[data-toggle="popover"]').popover();
-});
+// $(document).ready(function(){
+//     $('[data-toggle="popover"]').popover();
+// });
 
 var div = document.getElementById("dom-target");
 try {
