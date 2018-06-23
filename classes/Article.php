@@ -70,6 +70,48 @@ class Article
     if ( $row ) return new Article( $row );
   }
 
+  public static function getPrev( $id ) {
+    $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
+    for ($i = 0; $i <= 4; $i++) {
+      $id = $id - $i;
+      $sql = "SELECT *, UNIX_TIMESTAMP(publicationDate) AS publicationDate FROM articles WHERE id = :id";
+      $st = $conn->prepare( $sql );
+      $st->bindValue( ":id", $id, PDO::PARAM_INT );
+      $st->execute();
+      $row = $st->fetch();
+      if ($row) {
+        break;
+      }
+    }
+    $conn = null;
+    if ( $row ) return $id;
+    else return null;
+  }
+
+  public static function getNext( $id ) {
+    $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
+    //Most horrible bit of code I've ever written. Check 4 records to make sure none have been deleted
+    for ($i = 0; $i <= 4; $i++) {
+      $id = $id + $i;
+      $sql = "SELECT *, UNIX_TIMESTAMP(publicationDate) AS publicationDate FROM articles WHERE id = :id";
+      $st = $conn->prepare( $sql );
+      $st->bindValue( ":id", $id, PDO::PARAM_INT );
+      $st->execute();
+      $row = $st->fetch();
+      if ($row) {
+        break;
+      }
+    }
+    // $sql = "SELECT *, UNIX_TIMESTAMP(publicationDate) AS publicationDate FROM articles WHERE id = :id";
+    // $st = $conn->prepare( $sql );
+    // $st->bindValue( ":id", $id, PDO::PARAM_INT );
+    // $st->execute();
+    // $row = $st->fetch();
+    $conn = null;
+    if ( $row ) return $id;
+    else return null;
+  }
+
 
   /**
   * Returns all (or a range of) Article objects in the DB

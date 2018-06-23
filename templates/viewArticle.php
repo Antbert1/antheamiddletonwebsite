@@ -1,4 +1,5 @@
 <?php include "include/header.php";
+
 $commentVal = 0;
 if(isset($_GET['comment'])) {
   $commentVal = 1;
@@ -33,7 +34,7 @@ if ( sizeof($results['comments']) > 0 ) {
     <div class="row">
       <div class="col-md-8 blog-content-row">
         <div class="nextPrevBtns">
-          <!-- <?php if ( $results['article']->id ): ?>
+          <?php if ($results['previous'] !== null): ?>
             <div class="prev">
               Previous
             </div>
@@ -42,7 +43,7 @@ if ( sizeof($results['comments']) > 0 ) {
               <div class="spacer"></div>
             </div>
           <?php endif; ?>
-          <?php if ( $commentVal == 1 ): ?>
+          <?php if ($results['next'] !== null): ?>
             <div class="next">
               Next
             </div>
@@ -50,7 +51,7 @@ if ( sizeof($results['comments']) > 0 ) {
             <div class="next">
               <div class="spacer"></div>
             </div>
-          <?php endif; ?> -->
+          <?php endif; ?>
         </div>
         <?php echo $results['article']->content?>
         <div class="commentSection">

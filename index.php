@@ -58,6 +58,9 @@ function viewArticle() {
   $results['article'] = Article::getById( (int)$_GET["articleId"] );
   $results['comments'] = Comment::getListForPost( (int)$_GET["articleId"] )['results'];
   $results['pageTitle'] = $results['article']->title . " | Anthea Middleton";
+  $results['previous'] =  Article::getPrev( (int)$_GET["articleId"]-1 );
+  $results['next'] =  Article::getNext( (int)$_GET["articleId"]+1 );
+  echo $results['previous'];
   //echo sizeof($results['comments']);
   require( TEMPLATE_PATH . "/viewArticle.php" );
 }
