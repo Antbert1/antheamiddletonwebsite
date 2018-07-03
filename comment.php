@@ -25,3 +25,9 @@ function newComment($commentVals) {
 header("Location: post/". $postID."?comment=1#commentAnchor");
 
  ?>
+
+
+
+
+
+ ?>
