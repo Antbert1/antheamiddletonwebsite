@@ -1,5 +1,13 @@
 <?php include "include/header.php";
-
+$subscribed = 'NOTSET';
+if (isset($_GET['subscribed'])) {
+  if ($_GET['subscribed'] == 1) {
+    $subscribed = 'true';
+  }
+  elseif ($_GET['subscribed'] == 0) {
+    $subscribed = 'false';
+  }
+}
 $commentVal = 0;
 if(isset($_GET['comment'])) {
   $commentVal = 1;
@@ -35,8 +43,8 @@ if ( sizeof($results['comments']) > 0 ) {
       <div class="col-md-8 blog-content-row">
         <div class="nextPrevBtns">
           <?php if ($results['previous'] !== null): ?>
-            <div class="prev">
-              Previous
+            <div class="prev navButtons">
+              <a href="<?php echo $extension ?>post/<?php echo $results['previous']?>">&lt; Previous</a>
             </div>
           <?php else: ?>
             <div class="prev">
@@ -44,16 +52,20 @@ if ( sizeof($results['comments']) > 0 ) {
             </div>
           <?php endif; ?>
           <?php if ($results['next'] !== null): ?>
-            <div class="next">
-              Next
+            <div class="next navButtons">
+              <a href="<?php echo $extension ?>post/<?php echo $results['next']?>">Next &gt;</a>
             </div>
           <?php else: ?>
             <div class="next">
               <div class="spacer"></div>
             </div>
           <?php endif; ?>
+
         </div>
         <?php echo $results['article']->content?>
+        <div class="shareSection">
+          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
         <div class="commentSection">
           <a name="commentAnchor">
             <h2>Leave a Comment</h2>
@@ -73,6 +85,7 @@ if ( sizeof($results['comments']) > 0 ) {
                 <textarea id="form_message" name="content" maxlength="1000" cols="25" rows="6" class="form-control" placeholder="Type message here *" rows="4" required="required" data-error="Please,leave us a message."></textarea>
                 <div class="help-block with-errors"></div>
               </div>
+              <div class="g-recaptcha" data-sitekey="6LdtImIUAAAAAJi7OwcqvRxZCXtbvLLqgoGdV0ci"></div>
     <!--
               <div class="g-recaptcha" data-sitekey="6LfjePkSAAAAALAHmBmSN1B2EO_qtDAOskpliwTJ"></div> -->
             <input type="submit" class="btn btn-success btn-send comment-btn" value="Submit">
@@ -108,6 +121,30 @@ if ( sizeof($results['comments']) > 0 ) {
         <?php } ?>
       </div>
       <div class="col-md-4 RHSSection">
+        <div class="subscribe">
+          <h3>Subscribe</h3>
+          Subscribe to my blog for email updates on new posts.
+          <form name="subscribeform" method="post" action="../subscribe.php?postID=<?php echo $results['article']->id?>">
+            <div class="controls">
+
+              <div class="form-group">
+                <input id="form_name" type="text" name="emailAddress" maxlength="50" size="30" class="form-control" placeholder="Email Address">
+              </div>    <!--
+              <div class="g-recaptcha" data-sitekey="6LfjePkSAAAAALAHmBmSN1B2EO_qtDAOskpliwTJ"></div> -->
+              <input type="submit" class="btn btn-success btn-send subscribe-btn" value="Subscribe">
+            </div>
+          </form>
+          <?php if ($subscribed == 'true'): ?>
+            <div class="subscribedTrue subscribedMessage">
+              Thanks. Now begin the eager anticipation of your first Anthea blog email.
+            </div>
+          <?php elseif ($subscribed == 'false') : ?>
+            <div class="subscribedFalse subscribedMessage">
+              That is not a valid email address, which will make it far trickier for me to send you blog updates. Try again.
+            </div>
+          <?php endif; ?>
+        </div>
+        <div class="divider"></div>
         <div class="links">
           <h3>Links I Like</h3>
           <ul class="linkslist">
@@ -120,7 +157,7 @@ if ( sizeof($results['comments']) > 0 ) {
         <div class="divider"></div>
         <div class="twitterTimeline">
           <h3>Sometimes I Tweet</h3>
-          <p>Mostly I just retweet <a href="https://twitter.com/dog_feelings" target="_blank">@thoughsofdog</a> though, so you could just follow them.</p>
+          <p>Mostly I retweet <a href="https://twitter.com/dog_feelings" target="_blank">@thoughtsofdog</a> though, so you could just follow them.</p>
           <a href="https://twitter.com/antheamiddleton?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @antheamiddleton</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
     </div>
@@ -184,13 +221,13 @@ if ( sizeof($results['comments']) > 0 ) {
       </div>
     </div>
   <?php } ?> -->
-
+    </div>
     <div class="row">
       <div class="col-md-12">
         <p><a href="../">Return to Homepage</a></p>
       </div>
     </div>
-  </div>
+
 
   <div id="imagePopup" class="modal fade" role="dialog">
     <div class="modal-dialog">

@@ -1,4 +1,13 @@
 <?php include "include/header.php";
+$subscribed = 'NOTSET';
+if (isset($_GET['subscribed'])) {
+  if ($_GET['subscribed'] == 1) {
+    $subscribed = 'true';
+  }
+  elseif ($_GET['subscribed'] == 0) {
+    $subscribed = 'false';
+  }
+}
   $pathToUse = "/antheamiddleton/images/";
   $pageNumber = '1';
   $catPage = false;
@@ -6,8 +15,8 @@
   if (isset($_GET['startPoint'])) {
     $pageNumber = $_GET['startPoint'];
   }
-  if (isset($_GET['cat'])) {
-    if ($_GET['cat'] == 'All') {
+  if (isset($_GET['category'])) {
+    if ($_GET['category'] == 'All') {
       $catAll = true;
     }
     $catPage = true;
@@ -62,7 +71,7 @@
 
                   <p class="summary"><?php echo htmlspecialchars( $article->summary )?>...</p>
                   <br>
-                  <a href="post/<?php echo $article->id?>" class="contReading">Continue Reading...</a>
+                  <a href="<?php echo $extension ?>post/<?php echo $article->id?>" class="contReading">Continue Reading...</a>
                   <!-- <a href=".?action=post&amp;articleId=<?php echo $article->id?>" class="contReading">Continue Reading...</a> -->
                   <div class="extraInfoWrap">
                     <div class="extraInfo">
@@ -100,6 +109,48 @@
         </ul>
       </div>
       <div class="col-md-4 RHSSection">
+        <div class="subscribe homeSubscribe">
+          <h3>Subscribe</h3>
+          Subscribe to my blog for email updates on new posts.
+          <?php if ($subscribed == 'NOTSET') : ?>
+
+            <?php if ($pageNumber == 1) : ?>
+              <form name="subscribeform" method="post" action="subscribe.php?pageNum=<?php echo $pageNumber?>">
+            <?php else : ?>
+              <form name="subscribeform" method="post" action="../../subscribe.php?pageNum=<?php echo $pageNumber?>">
+            <?php endif ?>
+
+          <?php else: ?>
+            <?php if ($pageNumber == 1) : ?>
+              <form name="subscribeform" method="post" action="../../subscribe.php?pageNum=<?php echo $pageNumber?>">
+            <?php else : ?>
+              <form name="subscribeform" method="post" action="../../../../subscribe.php?pageNum=<?php echo $pageNumber?>">
+            <?php endif ?>
+
+          <?php endif ?>
+
+
+            <div class="controls">
+
+              <div class="form-group">
+                <input id="form_name" type="text" name="emailAddress" maxlength="50" size="30" class="form-control" placeholder="Email Address">
+              </div>
+    <!--
+              <div class="g-recaptcha" data-sitekey="6LfjePkSAAAAALAHmBmSN1B2EO_qtDAOskpliwTJ"></div> -->
+              <input type="submit" class="btn btn-success btn-send subscribe-btn" value="Subscribe">
+            </div>
+          </form>
+          <?php if ($subscribed == 'true'): ?>
+            <div class="subscribedTrue subscribedMessage">
+              Thanks. Now begin the eager anticipation of your first Anthea blog email.
+            </div>
+          <?php elseif ($subscribed == 'false') : ?>
+            <div class="subscribedFalse subscribedMessage">
+              That is not a valid email address, which will make it far trickier for me to send you blog updates. Try again.
+            </div>
+          <?php endif; ?>
+        </div>
+        <div class="divider"></div>
         <div class="links homeLinks">
           <h3>Links I Like</h3>
           <ul class="linkslist">
@@ -112,7 +163,7 @@
         <div class="divider"></div>
         <div class="twitterTimeline">
           <h3>Sometimes I Tweet</h3>
-          <p>Mostly I just retweet <a href="https://twitter.com/dog_feelings" target="_blank">@thoughsofdog</a> though, so you could just follow them.</p>
+          <p>Mostly I retweet <a href="https://twitter.com/dog_feelings" target="_blank">@thoughtsofdog</a> though, so you could just follow them.</p>
           <a href="https://twitter.com/antheamiddleton?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @antheamiddleton</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
         <div class="divider"></div>
@@ -123,7 +174,17 @@
           <span class="caret"></span></a>
           <ul class="dropdown-menu cat-dropdown">
             <?php foreach ( $newCatsUnique as $cat ) { ?>
-              <li><a href="<?php echo $extension ?>category/<?php echo $cat ?>"><?php echo $cat ?></a></li>
+              <?php $catsSplit = explode(" ",$cat);
+              if (sizeof($catsSplit) > 1) {
+                $catNew = $catsSplit[0];
+                for ($i = 1; $i < sizeof($catsSplit); $i++) {
+                  $catNew = $catNew.'-'.$catsSplit[$i];
+                }
+              }
+              else {
+                $catNew = $catsSplit[0];
+              } ?>
+              <li><a href="<?php echo $extension ?>category/<?php echo $catNew ?>"><?php echo $cat ?></a></li>
             <?php } ?>
           </ul>
         </div>

@@ -403,6 +403,10 @@ a:hover {
 	border-right: 1px solid rgb(223,223,223)
 }
 
+.RHSSection {
+	padding-left: 40px;
+}
+
 .RHSSection h3 {
 	font-size: 1.3em;
 }
@@ -757,6 +761,32 @@ tr:hover {
 	padding-bottom:200px;
 }
 
+.nextPrevBtns {
+	display:flex;
+	justify-content: space-between;
+}
+
+.navButtons a {
+	font-weight:600;
+}
+
+.homeSubscribe {
+	padding-top: 20px;
+}
+
+.extraSpace {
+	padding-bottom:150px;
+}
+
+.subscribedMessage {
+	padding: 10px;
+	margin-top: 10px;
+	border: 1px solid grey;
+}
+
+.shareSection {
+	padding-top: 20px;
+}
 /*Media Queries*/
 @media only screen and (max-width: 800px) {
   .logoSection a{
@@ -782,6 +812,12 @@ tr:hover {
 @media only screen and (max-width: 992px) {
     .aboutBlurb {
 			padding-bottom:20px;
+		}
+		.RHSSection {
+			padding-left: 15px;
+		}
+		.blog-content-row {
+			border-right: none;
 		}
 }
 

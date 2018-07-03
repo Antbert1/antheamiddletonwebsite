@@ -145,9 +145,19 @@ class Article
 
   public static function getCatList( $category, $numRows=1000000, $order="publicationDate DESC" ) {
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
+    $split_cat = explode("-", $category);
+    if (sizeof($split_cat) > 1) {
+      $catNew = $split_cat[0];
+      for ($i = 1; $i < sizeof($split_cat); $i++) {
+        $catNew = $catNew . " " . $split_cat[$i];
+      }
+    }
+    else {
+      $catNew = $split_cat[0];
+    }
 
     $sql = "SELECT SQL_CALC_FOUND_ROWS *, UNIX_TIMESTAMP(publicationDate) AS publicationDate
-            FROM `articles` WHERE categories LIKE '%".$category."%'
+            FROM `articles` WHERE categories LIKE '%".$catNew."%'
             ORDER BY " . mysql_escape_string($order) . " LIMIT :numRows";
 
     // $sql = "SELECT SQL_CALC_FOUND_ROWS *, UNIX_TIMESTAMP(publicationDate) AS publicationDate

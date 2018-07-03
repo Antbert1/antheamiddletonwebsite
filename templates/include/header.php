@@ -61,6 +61,7 @@ else {
 <html lang="en">
   <head>
     <title><?php echo htmlspecialchars( $results['pageTitle'] )?></title>
+    <meta name='description' content="<?php echo $results['article']->summary ?>">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
 
@@ -69,14 +70,23 @@ else {
     <?php if ($isPost == TRUE): ?>
       <meta property="og:url" content="http://www.antheamiddleton.com/post/<?php echo $_GET['articleId']?>" />
       <meta property="og:type" content="website" />
-      <meta property="og:title" content="Anthea Middleton" />
+      <meta property="og:title" content="<?php echo $results['article']->title ?>" />
       <meta property="og:description" content="<?php echo $results['article']->summary ?>" />
+
+      <meta name="twitter:card" content="<?php echo $results['article']->summary ?>">
+      <meta name="twitter:site" content="@antheamiddleton">
+      <meta name="twitter:title" content="<?php echo $results['article']->title ?>">
+      <meta name="twitter:description" content="<?php echo $results['article']->summary ?>">
+      <meta name="twitter:domain" content="http://www.antheamiddleton.com/post/<?php echo $_GET['articleId']?>">
+
       <?php if ($imagePath !== null): ?>
-        <meta property="og:image" content="http://localhost/antheamiddleton/images/<?php echo $imagePath ?>" />
+        <meta property="og:image" content="http://antheamiddleton/images/<?php echo $imagePath ?>" />
+        <meta name="twitter:image" content="http://antheamiddleton/images/<?php echo $imagePath ?>">
       <?php endif ?>
 
 
     <?php endif ?>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
   </head>
   <body>
 
@@ -88,6 +98,7 @@ else {
     <?php endif ?>
         <div class="container">
           <div class="row logoRow">
+            <div class="col-md-12">
             <?php if ($isPost == TRUE || $isCat == TRUE): ?>
               <a href="../"><img id="logo" src="<?php echo $extension ?>images/websiteImages/anthea-middleton-logo.png" alt="Anthea Middleton" /></a>
             <?php elseif ($isPage == TRUE): ?>
@@ -95,6 +106,7 @@ else {
             <?php else: ?>
               <a href="./"><img id="logo" src="<?php echo $extension ?>images/websiteImages/anthea-middleton-logo.png" alt="Anthea Middleton" /></a>
             <?php endif ?>
+          </div>
           </div>
         </div>
       </section>

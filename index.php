@@ -60,7 +60,6 @@ function viewArticle() {
   $results['pageTitle'] = $results['article']->title . " | Anthea Middleton";
   $results['previous'] =  Article::getPrev( (int)$_GET["articleId"]-1 );
   $results['next'] =  Article::getNext( (int)$_GET["articleId"]+1 );
-  echo $results['previous'];
   //echo sizeof($results['comments']);
   require( TEMPLATE_PATH . "/viewArticle.php" );
 }
@@ -133,6 +132,7 @@ function viewCatSection() {
 
   $newCatsUnique = array_unique($newCats);
   sort($newCatsUnique);
+  array_shift($newCatsUnique);
   array_unshift($newCatsUnique, "All");
 
   require( TEMPLATE_PATH . "/homepage.php" );
@@ -167,6 +167,8 @@ function homepage() {
 
   $newCatsUnique = array_unique($newCats);
   sort($newCatsUnique);
+  //echo '*'.$newCatsUnique[1 ].'*';
+  array_shift($newCatsUnique);
   array_unshift($newCatsUnique, "All");
 
 
